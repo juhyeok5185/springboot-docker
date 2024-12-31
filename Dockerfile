@@ -1,4 +1,7 @@
-FROM amazoncorretto:17.0.12
-ADD /build/libs/*.jar app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+FROM openjdk:17-jdk-slim
 
+WORKDIR /app
+
+COPY ./build/libs/dockerTest-0.0.1-SNAPSHOT.jar /app/app.jar
+
+CMD ["java", "-jar", "/app/app.jar"]
